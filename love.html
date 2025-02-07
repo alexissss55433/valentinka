@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-love.css">
+    <title>Анимация Сердечек</title>
+</head>
+
+<body onclick="createHeart_click(event)">
+    <div class="hearts"></div>
+    <!-- From Uiverse.io by ElSombrero2 -->
+    <!-- From Uiverse.io by gharsh11032000 -->
+    <!-- From Uiverse.io by gharsh11032000 -->
+    <div class="card">
+        <div class="card__icon">С Днём Святого Валентина</div> <!-- Заменили SVG на текст -->
+        <div class="card__content">
+            <p class="card__title">For You ❤️</p>
+            <p class="card__description">Котик, Ти самое лучшее что есть у меня в жизни, люблю тебя❤️
+            </p>
+        </div>
+    </div>
+
+
+    <script>
+        const heartsContainer = document.querySelector('.hearts');
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heartsContainer.appendChild(heart);
+
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 3 + 3}s`; // случайная длительность анимации
+
+            // Удаление сердца после завершения анимации
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        function createHeart_click(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('click-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        }
+        // Увеличим частоту появления сердечек
+        setInterval(createHeart, 100);  // Теперь сердечки появляются каждые 0.3 секунды
+    </script>
+</body>
+
+</html>
